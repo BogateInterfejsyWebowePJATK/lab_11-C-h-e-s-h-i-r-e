@@ -9,9 +9,11 @@ function App() {
 
 var min = 0;
 var max = 10;
-   
 
 var list = [];
+
+const refreshPage = ()=>{
+     window.location.reload();  }
 
 for(var i = 0; i < 10 ; i++){
 var rand =  min + (Math.random() * (max-min));
@@ -20,12 +22,14 @@ list[i] = Math.floor(rand);
 }; 
 
   return (
-  
-      <ul className="rand_list">
+  	<div>
+      	<ul className="rand_list">
             {list.map((random, i) => (
                 <li id={i}>{random}</li>
             ))}
         </ul>
+        <button onClick={refreshPage}>Refresh</button>
+        </div>
 
   );
 }
