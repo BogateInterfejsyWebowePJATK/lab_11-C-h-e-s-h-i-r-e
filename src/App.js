@@ -1,37 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import ReactDOM from "react-dom";
-//import data from "./data/recipes.json";
-//import Rand from "./components/random";
+import Menu from "./components/menu";
 
-function App() {
-
-var min = 0;
-var max = 10;
-
-var list = [];
-
-const refreshPage = ()=>{
-     window.location.reload();  }
-
-for(var i = 0; i < 10 ; i++){
-var rand =  min + (Math.random() * (max-min));
-list[i] = Math.floor(rand);
-
-}; 
+export default function App() {
 
   return (
-  	<div>
-      	<ul className="rand_list">
-            {list.map((random, i) => (
-                <li id={i}>{random}</li>
-            ))}
-        </ul>
-        <button onClick={refreshPage}>Refresh</button>
-        </div>
-
-  );
+<>
+<Menu />
+</>
+)
 }
 
-export default App;
