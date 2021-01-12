@@ -1,20 +1,41 @@
 import React from "react";
 
-export default function Buttons({x, i, del = f => f, toBin = f => f, toOct = f => f, toHex = f => f, refresh}) {
+export default function Buttons({p,setP}) {
 
-    const [data, setData] = React.useState("")
 
-    React.useEffect(() => {
-        setData("")
-    }, [refresh])
+function random_in_Array(arr) {
+    let arrCopy = [...arr];
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(arrCopy.splice(Math.random() * arrCopy.length, 1)[0]);
+    }
+    return result;
+}
+
+ 
 
     return (
-        <li key={x}>{i}
-            <button onClick={() => del(x)}>Usun</button>
-            <button onClick={() => setData(toBin(x))}>Bin</button>
-            <button onClick={() => setData(toOct(x))}>Oct</button>
-            <button onClick={() => setData(toHex(x))}>Hex</button>
-            <b>{data}</b>
-        </li>
-    )
+    <>
+     <button onClick={
+        () => {
+          p.sort((a, b) => a.title.localeCompare(b.title));
+          setP([...p]);
+        }
+      }>Title</button>
+
+      <button onClick={
+        () => {
+          p.sort((a,b) => parseInt(a.date) - parseInt(b.date));
+          setP([...p]);
+        }
+      }>Date</button>
+
+      <button onClick={
+        () => {
+          setP(random_in_Array(p));
+        }
+      }>Randomize</button>
+     </>
+    );
 }
+
